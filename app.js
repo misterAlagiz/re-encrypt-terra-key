@@ -8,7 +8,7 @@ const initialEncryptedTerraKey = "***";
 const initialPassword = "***";
 const publicWalletAddress = "***";
 const walletName = "wallet1";
-const newPassword = "newPassword1!";
+const newPassword = "newPassword2";
 
 const decrypt = (terraPrivateKey, password) => {
   try {
@@ -27,7 +27,7 @@ const decrypt = (terraPrivateKey, password) => {
       iv: iv,
       padding: CryptoJS.pad.Pkcs7,
       mode: CryptoJS.mode.CBC,
-    }).toString();
+    }).toString(CryptoJS.enc.Utf8);
 
     console.log("decrypting successful!");
 
@@ -35,7 +35,7 @@ const decrypt = (terraPrivateKey, password) => {
   } catch (error) {
     console.log("error while decrypting:", error);
 
-    return ''
+    throw ("error while decrypting:", error);
   }
 }
 
@@ -66,12 +66,18 @@ const encrypt = (message, password) => {
   } catch (error) {
     console.log("error while encrypting:", error);
 
-    return ''
+    throw ("error while encrypting:", error);
   }
 }
 
 try {
-  const initialDecryptedTerraKey = decrypt(initialEncryptedTerraKey, initialPassword);
+  const wrappedKey = JSON.parse(
+    Buffer.from(
+      initialEncryptedTerraKey,
+      "base64"
+    ).toString("utf8")
+  );
+  const initialDecryptedTerraKey = decrypt(wrappedKey.encrypted_key, initialPassword);
   const newEncryptedTerraKey = encrypt(initialDecryptedTerraKey, newPassword);
   const base64Key = Buffer.from(`{
     "name":"${walletName}",
