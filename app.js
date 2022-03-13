@@ -1,5 +1,12 @@
 import CryptoJS from 'crypto-js';
 
+import { LCDClient, RawKey } from "@terra-money/terra.js";
+
+const terra = new LCDClient({
+  chainID: "columbus-5",
+  URL: "https://lcd.terra.dev",
+});
+
 const keySize = 256;
 const iterations = 100;
 
@@ -85,7 +92,11 @@ try {
     "encrypted_key":"${newEncryptedTerraKey}"
   }`).toString('base64');
 
-  console.log("\nyour new private key:", base64Key, "\nnew password:", newPassword);
+  const wallet = terra.wallet(new RawKey(Buffer.from(initialDecryptedTerraKey, "hex")));
+
+  console.log("wallet address:", wallet.key.accAddress);
+
+  // console.log("\nyour new private key:", base64Key, "\nnew password:", newPassword);
 } catch (error) {
   console.log("error:", error);
 }
