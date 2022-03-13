@@ -11,6 +11,8 @@ potentially helps to solve "invalid hex string" error when importing the key.
 
 ## setup
 * clone the repo
+* open terminal and navigate to the folder where files of this repo are (app.js, package.json, ..)
+  * cd command is helpful with folder navigation 
 * run 
   ```bash
   npm install
