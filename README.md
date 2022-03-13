@@ -22,7 +22,7 @@ potentially helps to solve "invalid hex string" error when importing the key.
     * **publicWalletAddress** - public wallet address (starts with "terra1"
   * optionally can be set 
     * **walletName** - name for the imported wallet, defaults to "wallet1"
-    * **newPassword** - new terra wallet password, defaults to 
+    * **newPassword** - new terra wallet password, defaults to "newPassword1!"
 
 ## execution
   ```bash
