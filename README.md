@@ -19,7 +19,7 @@ potentially helps to solve "invalid hex string" error when importing the key.
   * must be set:
     * **initialEncryptedTerraKey** - initial exported terra private key
     * **initialPassword** - initial terra wallet password 
-    * **publicWalletAddress** - public wallet address (starts with "terra1"
+    * **publicWalletAddress** - public wallet address (starts with "terra1")
   * optionally can be set 
     * **walletName** - name for the imported wallet, defaults to "wallet1"
     * **newPassword** - new terra wallet password, defaults to "newPassword1!"
