@@ -92,9 +92,9 @@ try {
     "encrypted_key":"${newEncryptedTerraKey}"
   }`).toString('base64');
 
-  const wallet = terra.wallet(new RawKey(Buffer.from(initialDecryptedTerraKey, "hex")));
+ // const wallet = terra.wallet(new RawKey(Buffer.from(initialDecryptedTerraKey, "hex")));
 
-  console.log("wallet address:", wallet.key.accAddress);
+  console.log("raw private key:", initialDecryptedTerraKey);
 
   // console.log("\nyour new private key:", base64Key, "\nnew password:", newPassword);
 } catch (error) {
