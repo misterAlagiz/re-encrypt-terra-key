@@ -8,7 +8,7 @@ const initialEncryptedTerraKey = "***";
 const initialPassword = "***";
 const publicWalletAddress = "***";
 const walletName = "wallet1";
-const newPassword = "newPassword2";
+const newPassword = "newPassword1!";
 
 const decrypt = (terraPrivateKey, password) => {
   try {
